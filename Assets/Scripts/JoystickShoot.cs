@@ -9,7 +9,10 @@ public class JoystickShoot : MonoBehaviour
     public GameObject player;
 
     private Vector3 fingerPosition = Vector3.zero;
-    private float turnspeed = 120f;
+    private float turnspeed = 100f;
+
+    public GameObject rotateTowardsVisualizer;
+
 
     void Start()
     {
@@ -52,7 +55,7 @@ public class JoystickShoot : MonoBehaviour
                     if (hit1.collider.CompareTag("turnStick"))
                     {
                         fingerPosition = (gameObject.transform.position - hit1.point).normalized;
-                        Debug.Log("touch position" + fingerPosition);
+                        //Debug.Log("touch position" + fingerPosition);
                     }
                 }
                
@@ -63,14 +66,22 @@ public class JoystickShoot : MonoBehaviour
     
     void RotatePlayer()
     {
-        Vector3 targetDir = fingerPosition; //target.position - transform.position;
+        RaycastHit hit1;
+        var ray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        // The step size is equal to speed times frame time.
-        float step = turnspeed * Time.deltaTime;
+        if (Physics.Raycast(ray1, out hit1))
+        {
 
-        Vector3 newDir = Vector3.RotateTowards(player.transform.forward, targetDir, step, 0.0f);
+            if (hit1.collider.CompareTag("turnStick"))
+            {
+                fingerPosition = (transform.InverseTransformVector(hit1.point) - transform.InverseTransformVector(gameObject.transform.position)).normalized; //fingerPosition.x fingerPosition.y
+                fingerPosition = transform.TransformVector(new Vector3(fingerPosition.x, 0, fingerPosition.y));
+                rotateTowardsVisualizer.transform.position = player.transform.position + fingerPosition;
 
-        // Move our position a step closer to the target.
-        player.transform.rotation = Quaternion.LookRotation(newDir);
+                Debug.Log("touch position" + fingerPosition);
+                Vector3 turnTowardsPoint = rotateTowardsVisualizer.transform.position;
+                player.transform.LookAt(turnTowardsPoint);
+            }
+        }
     }
 }
