@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 687712466}
   - component: {fileID: 687712465}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,11 +319,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687712463}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.145, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.4499999, z: 0}
+  m_LocalScale: {x: 0.0625, y: 0.5, z: 0.0625}
   m_Children: []
-  m_Father: {fileID: 2074519584}
+  m_Father: {fileID: 1309815487}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &687712465
@@ -745,7 +745,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 4.84}
   m_LocalScale: {x: 0.8, y: 0.1, z: 0.8}
   m_Children:
-  - {fileID: 2074519584}
+  - {fileID: 687712464}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -795,6 +795,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonCenter: {fileID: 1665338617}
+  playerCamera: {fileID: 732063313}
+  playerRigidbody: {fileID: 687712465}
 --- !u!58 &1665338619
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1007,35 +1009,4 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2074519583
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2074519584}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2074519584
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074519583}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 10, z: 1.25}
-  m_Children:
-  - {fileID: 687712464}
-  m_Father: {fileID: 1309815487}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
