@@ -333,6 +333,11 @@ MonoBehaviour:
   arCam: {fileID: 732063309}
   player: {fileID: 687712463}
   rotateTowardsVisualizer: {fileID: 198731687}
+  joyState: 0
+  lastJoyState: 0
+  shootOrigin: {fileID: 1707161951}
+  bulletPrefab: {fileID: 4510911357021978494, guid: 5a1c3fc81f11ed44fa123a3f7f4897be,
+    type: 3}
 --- !u!212 &355899183
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -370,7 +375,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0550075eb0bb6c346ae4cee74ffee2d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58a029e14aed941929cd5a65f6806b81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -467,7 +472,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0550075eb0bb6c346ae4cee74ffee2d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58a029e14aed941929cd5a65f6806b81, type: 3}
   m_Color: {r: 0.3026079, g: 0.8113208, b: 0.27171594, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -525,6 +530,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 712985461}
+  - {fileID: 1707161951}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1177,7 +1183,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1665338616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94fb590f38a5040c2a844cceeecb23a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 970f73a4e57db2745b1aa9936ea1f1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   arCam: {fileID: 732063309}
@@ -1222,7 +1228,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6101237a462664d088c9d41d52c218b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58a029e14aed941929cd5a65f6806b81, type: 3}
   m_Color: {r: 0.6320754, g: 0.617168, b: 0.617168, a: 0.3372549}
   m_FlipX: 0
   m_FlipY: 0
@@ -1233,6 +1239,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1707161950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707161951}
+  m_Layer: 0
+  m_Name: shootTargert
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1707161951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707161950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 687712464}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1872938417
 GameObject:
   m_ObjectHideFlags: 0

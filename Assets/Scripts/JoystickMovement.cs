@@ -45,7 +45,7 @@ public class JoystickMovement : MonoBehaviour {
                         if (touch.phase == TouchPhase.Began && hit.collider == joystickColliderBig){
                             usingJoystick = false;
                         }
-                        if (usingJoystick){
+                        if (usingJoystick && hit.collider.CompareTag("JoystickMovement")){
                             Vector3 joystickOrigin = transform.InverseTransformVector(transform.position);
                             Vector3 hitCoords;
                             
@@ -85,7 +85,7 @@ public class JoystickMovement : MonoBehaviour {
                         
                     }
                     
-                    if (usingJoystick){
+                    if (usingJoystick && hit.collider.CompareTag("JoystickMovement")){
                         Vector3 joystickOrigin = transform.InverseTransformVector(transform.position);
                         Vector3 hitCoords;
                         hitCoords = transform.InverseTransformVector(hit.point);
