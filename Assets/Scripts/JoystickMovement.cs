@@ -35,7 +35,7 @@ public class JoystickMovement : MonoBehaviour
         theDirection = horzLeftInput * right + vertLeftInput * camForward;
         movement = (theDirection * moveSpeed) * Time.deltaTime; 
 
-        playerRigidbody.MovePosition(transform.position + movement);
+        playerRigidbody.MovePosition(playerRigidbody.transform.position + movement);
 
         //Turning
         //horzRightInput = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).x;
