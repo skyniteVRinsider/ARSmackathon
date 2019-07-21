@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class JoystickShoot : MonoBehaviour
 {
+    public Camera arCam;
     public GameObject player;
 
     private Vector3 fingerPosition = Vector3.zero;
@@ -26,7 +27,7 @@ public class JoystickShoot : MonoBehaviour
                 {
                     // Construct a ray from the current touch coordinates
                     RaycastHit hit;
-                    var ray = Camera.main.ScreenPointToRay(touch.position);
+                    var ray = arCam.ScreenPointToRay(touch.position);
                     if (Physics.Raycast(ray, out hit))
                     {
                         // Create a particle if hit
