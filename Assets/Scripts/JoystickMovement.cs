@@ -32,7 +32,7 @@ public class JoystickMovement : MonoBehaviour {
             if (Input.touches.Length > 0 ){
                 foreach (Touch touch in Input.touches){
                     RaycastHit hit;
-                    //if (touch.phase == TouchPhase.Began &&)
+                    //if (touch.phase == TouchPhase.Began &&) //
                     
 
                     Debug.DrawRay(Input.mousePosition, Vector3.forward * 10f, Color.magenta);

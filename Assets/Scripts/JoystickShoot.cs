@@ -13,6 +13,20 @@ public class JoystickShoot : MonoBehaviour
 
     public GameObject rotateTowardsVisualizer;
 
+    public enum JoyState
+    {
+        unpressed,
+        pressed,
+    }
+    public JoyState joyState = JoyState.unpressed;
+    public JoyState lastJoyState = JoyState.unpressed;
+
+    public Transform shootOrigin;
+    public GameObject bulletPrefab;
+    private float shootVelocity = 8f;
+    private float shootCooldown = 0.25f;
+    private float shootCooldownTracker;
+
 
     void Start()
     {
@@ -55,13 +69,32 @@ public class JoystickShoot : MonoBehaviour
                     if (hit1.collider.CompareTag("turnStick"))
                     {
                         fingerPosition = (gameObject.transform.position - hit1.point).normalized;
+                        joyState = JoyState.pressed;
                         //Debug.Log("touch position" + fingerPosition);
                     }
+                    else
+                    {
+                        joyState = JoyState.unpressed;
+                    }
+                }
+                else
+                {
+                    joyState = JoyState.unpressed;
                 }
                
             }
-        }
+        }       
         RotatePlayer();
+        shootCooldownTracker += Time.deltaTime;
+        if (lastJoyState == JoyState.pressed && joyState == JoyState.unpressed)
+        {
+            if(shootCooldownTracker >= shootCooldown)
+            {
+                shootCooldownTracker = 0f;
+                Shoot();
+            }
+        }
+        lastJoyState = joyState;
     }  
     
     void RotatePlayer()
@@ -74,6 +107,8 @@ public class JoystickShoot : MonoBehaviour
 
             if (hit1.collider.CompareTag("turnStick"))
             {
+                joyState = JoyState.pressed;
+
                 fingerPosition = (transform.InverseTransformVector(hit1.point) - transform.InverseTransformVector(gameObject.transform.position)).normalized; //fingerPosition.x fingerPosition.y
                 fingerPosition = transform.TransformVector(new Vector3(fingerPosition.x, 0, fingerPosition.y));
                 rotateTowardsVisualizer.transform.position = player.transform.position + fingerPosition;
@@ -82,6 +117,21 @@ public class JoystickShoot : MonoBehaviour
                 Vector3 turnTowardsPoint = rotateTowardsVisualizer.transform.position;
                 player.transform.LookAt(turnTowardsPoint);
             }
+            else
+            {
+                joyState = JoyState.unpressed;
+            }
         }
+        else
+        {
+            joyState = JoyState.unpressed;
+        }
+    }
+
+    void Shoot()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, shootOrigin.transform.position, shootOrigin.transform.rotation);
+        //add force in direction
+        bullet.GetComponent<Rigidbody>().AddForce(shootOrigin.transform.forward * shootVelocity, ForceMode.VelocityChange);
     }
 }
