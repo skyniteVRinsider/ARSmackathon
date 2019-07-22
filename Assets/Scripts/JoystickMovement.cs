@@ -103,7 +103,7 @@ public class JoystickMovement : MonoBehaviour {
                 
                 }
             }
-            //Debug.Log(usingJoystick);
+           
             yield return null;
         }
     }
