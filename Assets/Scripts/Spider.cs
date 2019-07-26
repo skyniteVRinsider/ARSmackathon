@@ -8,9 +8,9 @@ public class Spider : Enemy
 
     public Transform player;
 
-    public float shootVelocity = 1f;
+    public float shootVelocity = .6f;
     float timer;
-    float attackCooldown = 1.5f;
+    float attackCooldown = 2.5f;
 
     public float health = 100;
 

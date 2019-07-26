@@ -1113,7 +1113,7 @@ MonoBehaviour:
   spiderAttack: {fileID: 4042590129609075917, guid: 4e5c90ffce5fb40f5a877d747d80762d,
     type: 3}
   player: {fileID: 0}
-  shootVelocity: 0.5
+  shootVelocity: 0.25
   health: 100
   enemyManager: {fileID: 0}
 --- !u!65 &983394237743426738

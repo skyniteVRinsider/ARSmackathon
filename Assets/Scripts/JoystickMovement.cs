@@ -14,6 +14,9 @@ public class JoystickMovement : MonoBehaviour {
 
     bool usingJoystick = false; 
 
+    public GameObject moveIndicator;
+
+
     
 
    
@@ -86,6 +89,7 @@ public class JoystickMovement : MonoBehaviour {
                     }
                     
                     if (usingJoystick && hit.collider.CompareTag("JoystickMovement")){
+                        MoveIndicator(hit.point);
                         Vector3 joystickOrigin = transform.InverseTransformVector(transform.position);
                         Vector3 hitCoords;
                         hitCoords = transform.InverseTransformVector(hit.point);
@@ -96,11 +100,15 @@ public class JoystickMovement : MonoBehaviour {
                         
                         Vector3 trueDir = transform.TransformVector(new Vector3(x, 0f, z)).normalized;
                         MovePlayer(trueDir);
+                    } else {
+                        MoveIndicatorOrigin();
                     }
                     
 
 
                 
+                } else {
+                    MoveIndicatorOrigin();
                 }
             }
            
@@ -108,7 +116,14 @@ public class JoystickMovement : MonoBehaviour {
         }
     }
   
-  
+    void MoveIndicator (Vector3 fingerPose){
+        Vector3 indicatorPosition = new Vector3(fingerPose.x, fingerPose.y, moveIndicator.transform.position.z);
+        moveIndicator.transform.position = Vector3.Lerp(moveIndicator.transform.position, indicatorPosition, .3f);
+    }
+
+    void MoveIndicatorOrigin (){
+        moveIndicator.transform.position = Vector3.Lerp(moveIndicator.transform.position, transform.position, .3f);
+    }
 
     void MovePlayer(Vector3 direction){
         float moveSpeed = .5f;

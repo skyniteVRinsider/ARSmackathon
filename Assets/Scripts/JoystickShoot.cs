@@ -26,6 +26,7 @@ public class JoystickShoot : MonoBehaviour
     private float shootVelocity = 3f;
     private float shootCooldown = 0.25f;
     private float shootCooldownTracker;
+    public GameObject indicator;
 
 
     void Start()
@@ -111,6 +112,7 @@ public class JoystickShoot : MonoBehaviour
 
                     if (hit1.collider.CompareTag("turnStick"))
                     {
+                        showIndicator();
                         joyState = JoyState.pressed;
 
                         fingerPosition = (transform.InverseTransformVector(hit1.point) - transform.InverseTransformVector(gameObject.transform.position)).normalized; //fingerPosition.x fingerPosition.y
@@ -126,16 +128,20 @@ public class JoystickShoot : MonoBehaviour
                     else
                     {
                         joyState = JoyState.unpressed;
+                        hideIndicator();
                     }
                 }
                 else
                 {
                     joyState = JoyState.unpressed;
+                    hideIndicator();
                 }
             }
         }
-        else {
+        else 
+        {
             joyState = JoyState.unpressed;
+            hideIndicator();
         }
     
     }
@@ -145,5 +151,14 @@ public class JoystickShoot : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, shootOrigin.transform.position, shootOrigin.transform.rotation);
         //add force in direction
         bullet.GetComponent<Rigidbody>().AddForce(shootOrigin.transform.forward * shootVelocity, ForceMode.VelocityChange);
+    }
+
+    void showIndicator(){
+        indicator.SetActive(true);
+    }
+    void hideIndicator(){
+        indicator.SetActive(false);
+        Debug.Log("indicator hidden");
+
     }
 }
