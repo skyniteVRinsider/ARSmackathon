@@ -59,12 +59,14 @@ public class GameManager : MonoBehaviour
             //show placement marker, disable placement text 
             if (placementScript.tryGetPlacementAim(out placementPose)){
                 aimAtPlaneText.SetActive(false);
+                placementMarker.SetActive(true);
                 placementMarker.transform.position = placementPose.position;
                 placementMarker.transform.eulerAngles = new Vector3(placementMarker.transform.eulerAngles.x, arCamera.transform.eulerAngles.y, placementMarker.transform.eulerAngles.z);
                 
             //enable placement text b/c not aiming at plane
             } else {
                 aimAtPlaneText.SetActive(true);
+                placementMarker.SetActive(false);
             }
         
         } else if (gameState == GameState.InGame) {
